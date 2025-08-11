@@ -21,7 +21,7 @@ An AI-powered chatbot built with **Streamlit** and **H2O.ai AutoML** that helps 
 ## Installation
 
 1. Clone the repository:  
-   git clone https://github.com/yourusername/heart-disease-chatbot.git
+   git clone https://github.com/ShihanaB/Heart-Disease-Prediction-Chatbot.git
 2. Navigate into the project directory:
    cd heart-disease-chatbot
 3. Install required packages:
