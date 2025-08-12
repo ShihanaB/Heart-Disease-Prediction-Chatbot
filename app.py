@@ -4,8 +4,8 @@ import pandas as pd
 import re
 
 # --- Initialize H2O and load your model ---
-h2o.init(max_mem_size="2G")  # limit memory if needed
-model_path = "GBM_grid_1_AutoML_1_20250730_201105_model_4"  # <-- change to your model path
+h2o.init(max_mem_size="512M")  
+model_path = "GBM_grid_1_AutoML_1_20250730_201105_model_4"  
 loaded_model = h2o.load_model(model_path)
 
 st.set_page_config(page_title="❤️ Heart Disease Chatbot", page_icon="❤️", layout="wide")
@@ -465,4 +465,5 @@ if 'last_prediction' in st.session_state:
         elif prob_pct > 20:
             st.markdown("**💙 Next Steps:** Consider routine checkup.")
         else:
+
             st.markdown("**🌟 Next Steps:** Keep up healthy habits!")
