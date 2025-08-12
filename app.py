@@ -1,10 +1,20 @@
 import streamlit as st
-import h2o
 import pandas as pd
 import re
+import h2o
+import os
 
-# --- Initialize H2O and load your model ---
-h2o.init(max_mem_size="512M")  
+try:
+    # Try to start H2O with reduced memory for cloud deployment
+    h2o.init(
+        max_mem_size="256M",  # Reduced memory
+        min_mem_size="128M",
+        nthreads=1,  # Single thread for cloud
+        strict_version_check=False
+    )
+except Exception as e:
+    st.error(f"H2O initialization failed: {e}")
+    st.info("Please ensure Java is installed and available.")
 model_path = "GBM_grid_1_AutoML_1_20250730_201105_model_4"  
 loaded_model = h2o.load_model(model_path)
 
@@ -467,3 +477,4 @@ if 'last_prediction' in st.session_state:
         else:
 
             st.markdown("**🌟 Next Steps:** Keep up healthy habits!")
+
